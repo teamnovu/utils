@@ -1,4 +1,4 @@
-import useId from './common/useId.js'
+import useId from './common/useId/index.js'
 
 export default {
   useId,
