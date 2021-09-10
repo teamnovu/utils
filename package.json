@@ -1,6 +1,6 @@
 {
   "name": "@teamnovu/utils",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Utilities commonly used by @teamnovu",
   "main": "index.js",
   "scripts": {
