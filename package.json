@@ -1,13 +1,15 @@
 {
   "name": "@teamnovu/utils",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Utilities commonly used by @teamnovu",
   "main": "index.js",
   "scripts": {
     "test": "echo \"No test specified\"",
     "release": "np --preview"
   },
-  "files": ["*"],
+  "files": [
+    "*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/teamnovu/utils.git"
