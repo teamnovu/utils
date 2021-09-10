@@ -1,0 +1,27 @@
+{
+  "name": "@teamnovu/utils",
+  "version": "0.0.1",
+  "description": "Utilities commonly used by @teamnovu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No test specified\"",
+    "release": "np --preview"
+  },
+  "files": ["*"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teamnovu/utils.git"
+  },
+  "author": "Tom Diggelmann (@buffalom)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teamnovu/utils/issues"
+  },
+  "homepage": "https://github.com/teamnovu/utils#readme",
+  "dependencies": {
+    "np": "^7.5.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
+}
