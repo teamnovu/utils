@@ -29,8 +29,8 @@ export default {
 ```vue
 <!-- SomeComponent.vue -->
 <template>
-  <InputField v-model="firstname" />
-  <InputField v-model="lastname" />
-  <InputField v-model="email" />
+  <InputField v-model="firstname" /> <!-- #input-field-1 -->
+  <InputField v-model="lastname" /> <!-- #input-field-2 -->
+  <InputField v-model="email" /> <!-- #input-field-3 -->
 </template>
 ```
