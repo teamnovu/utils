@@ -24,11 +24,13 @@
   "homepage": "https://github.com/teamnovu/utils#readme",
   "dependencies": {
     "@nuxtjs/eslint-config": "^6.0.1",
+    "@vue/reactivity": "^3.2.11",
     "babel-eslint": "^10.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-tailwindcss": "^1.14.3",
+    "lodash": "^4.17.21",
     "np": "^7.5.0",
     "prettier": "^2.4.1"
   },
