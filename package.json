@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"No test specified\"",
-    "release": "np"
+    "release": "np",
+    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint": "yarn lint:js"
   },
   "files": [
     "*"
@@ -21,9 +23,20 @@
   },
   "homepage": "https://github.com/teamnovu/utils#readme",
   "dependencies": {
-    "np": "^7.5.0"
+    "@nuxtjs/eslint-config": "^6.0.1",
+    "babel-eslint": "^10.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-tailwindcss": "^1.14.3",
+    "np": "^7.5.0",
+    "prettier": "^2.4.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^7.17.0"
   }
 }

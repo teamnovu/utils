@@ -1,0 +1,16 @@
+{
+  "eslint.packageManager": "yarn",
+  "npm.packageManager": "yarn",
+  "[javascript]": {
+      "editor.formatOnSave": false,
+      "editor.tabSize": 2
+  },
+  "[vue]": {
+      "editor.formatOnSave": false,
+      "editor.tabSize": 2
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+  },
+  "eslint.alwaysShowStatus": true
+}

@@ -18,23 +18,23 @@ export function useDispatchStoreActionMixin(config) {
       [`dispatch${nameUcFirst}`](payload, options) {
         const { observer } = {
           observer: this.$refs[observerRef],
-    
+
           ...options,
         }
-    
+
         return new Promise((resolve, reject) => {
           this[name].state = 'loading'
-    
+
           this.$store
             .dispatch(action, payload)
             .then((response) => {
               this[name].state = 'success'
-    
+
               resolve(response)
             })
             .catch((e) => {
               this[name].state = 'error'
-    
+
               if (
                 e.response?.status === 422 &&
                 e.response.data?.errors &&
@@ -42,7 +42,7 @@ export function useDispatchStoreActionMixin(config) {
               ) {
                 observer.setErrors(e.response.data.errors)
               }
-    
+
               reject(e)
             })
             .finally((_) => {
