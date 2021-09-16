@@ -14,6 +14,7 @@ yarn add @teamnovu/utils
 
 ### Vue.js
 - [useDispatchStoreAction](./vue/useDispatchStoreAction) simplifies dispatching a store action, tracking it's state and displaying validation errors. It can be used for simple form submits.
+- [Popover](./vue/popover) is a collection of components that imitate [HeadlessUI's popover](https://headlessui.dev/vue/popover) components and are compatible with Vue 2.
 
 ## Releasing a new verison
 
