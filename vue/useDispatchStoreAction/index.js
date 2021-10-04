@@ -45,9 +45,6 @@ export function useDispatchStoreActionMixin(config) {
 
               reject(e)
             })
-            .finally((_) => {
-              this[name].state = 'idle'
-            })
         })
       },
     },
