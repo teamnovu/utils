@@ -11,21 +11,21 @@ You can find a small, novu specific intro [in our Notion](https://www.notion.so/
 <!-- Navigation.vue -->
 <template>
   <nav>
-    <PopoverGroup as="ul">
-      <Popover as="li" class="relative">
+    <PopoverGroup tag="ul">
+      <Popover tag="li" class="relative">
         <PopoverButton>Foo</PopoverButton>
         <transition name="fade">
-          <PopoverPanel as="ul" class="absolute">
+          <PopoverPanel tag="ul" class="absolute">
             <li><a href="">Foobee</a></li>
             <li><a href="">Foobla</a></li>
           </PopoverPanel>
         </transition>
       </Popover>
       <li><a href="">Bar</a></li>
-      <Popover as="li" class="relative">
+      <Popover tag="li" class="relative">
         <PopoverButton>Bee</PopoverButton>
         <transition name="fade">
-          <PopoverPanel as="ul" class="absolute">
+          <PopoverPanel tag="ul" class="absolute">
             <li><a href="">Beeboo</a></li>
             <li><a href="">Beeple</a></li>
           </PopoverPanel>
