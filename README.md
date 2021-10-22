@@ -18,14 +18,14 @@ yarn add @teamnovu/utils
 
 ## Error handling
 
-If you encounter `Module parse failed: Unexpected token`-error. Try to add transpile to the build option in your `nuxt.config.js`:
+If you encounter `Module parse failed: Unexpected token`-error try adding the utils-package to the `build.transpile` option in your `nuxt.config.js`:
 
 ```js
-  build: {
-    transpile: [
-      '@teamnovu/utils',
-    ],
-  ]
+build: {
+  transpile: [
+    '@teamnovu/utils',
+  ],
+]
 ```
 
 ## Releasing a new verison
