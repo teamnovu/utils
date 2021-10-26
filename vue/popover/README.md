@@ -48,3 +48,16 @@ export default {
 }
 </script>
 ```
+
+### Automatic opening/closing on mouse enter/leave
+
+Opening on mouse enter and closing on mouse leave is enabled by default but can be disabled by setting the following props to false.
+
+```vue
+<Popover
+  :open-on-mouse-enter="false"
+  :close-on-mouse-leave="false"
+>
+  <!-- ... -->
+</Popover>
+```

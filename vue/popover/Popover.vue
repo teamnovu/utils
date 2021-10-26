@@ -52,6 +52,16 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    openOnMouseEnter: {
+      type: Boolean,
+      default: true,
+    },
+
+    closeOnMouseLeave: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   data() {
@@ -144,17 +154,21 @@ export default {
     },
 
     onMouseEnter(event) {
-      event.preventDefault()
-      event.stopPropagation()
+      if (this.openOnMouseEnter) {
+        event.preventDefault()
+        event.stopPropagation()
 
-      this.open()
+        this.open()
+      }
     },
 
     onMouseLeave(event) {
-      event.preventDefault()
-      event.stopPropagation()
+      if (this.closeOnMouseLeave) {
+        event.preventDefault()
+        event.stopPropagation()
 
-      this.close()
+        this.close()
+      }
     },
 
     onEsc(event) {
