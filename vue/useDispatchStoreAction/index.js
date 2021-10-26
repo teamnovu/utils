@@ -41,6 +41,8 @@ export function useDispatchStoreActionMixin(config) {
 
           this[name].state = 'success'
           this[name].responseStatus = response?.status
+
+          return response
         } catch (e) {
           this[name].state = 'error'
           this[name].responseStatus = e.response?.status
