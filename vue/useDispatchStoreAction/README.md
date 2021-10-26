@@ -72,6 +72,12 @@ Default: `'observer'`
 
 This is the vee-validate ValidationObserver ref to be used to set validation errors. Set falsy if you don't want it to set error messages for you.
 
+##### validate
+
+Default: `true`
+
+This will decide whether the ValidationObserver provided above should be validated before dispatching the store action.
+
 #### dispatchStoreAction Method Options
 
 The following options can be passed to the dispatch method as follows.
@@ -85,3 +91,9 @@ dispatchStoreAction(payload, options)
 Default: `this.$refs[observerRef]`
 
 Here, the ValidationObserver instance can be passed to override the observerRef previously set.
+
+##### validate
+
+Default: `validate`
+
+This will override the validate option previously set.

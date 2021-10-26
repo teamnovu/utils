@@ -1,7 +1,8 @@
 export function useDispatchStoreActionMixin(config) {
-  const { action, name, observerRef } = {
+  const { action, name, observerRef, validate } = {
     name: 'storeAction',
     observerRef: 'observer',
+    validate: true,
 
     ...config,
   }
@@ -10,42 +11,50 @@ export function useDispatchStoreActionMixin(config) {
   return {
     data() {
       return {
-        [name]: { state: 'idle' },
+        [name]: { state: 'idle', responseStatus: null },
       }
     },
 
     methods: {
-      [`dispatch${nameUcFirst}`](payload, options) {
-        const { observer } = {
+      async [`dispatch${nameUcFirst}`](payload, options) {
+        const { observer, validate: innerValidate } = {
           observer: this.$refs[observerRef],
+          validate,
 
           ...options,
         }
 
-        return new Promise((resolve, reject) => {
-          this[name].state = 'loading'
+        this[name].state = 'loading'
+        this[name].responseStatus = null
 
-          this.$store
-            .dispatch(action, payload)
-            .then((response) => {
-              this[name].state = 'success'
+        if (innerValidate && observer) {
+          if (!(await observer.validate())) {
+            this[name].state = 'failed_validation'
+            this[name].responseStatus = null
 
-              resolve(response)
-            })
-            .catch((e) => {
-              this[name].state = 'error'
+            throw new Error('Validation failed')
+          }
+        }
 
-              if (
-                e.response?.status === 422 &&
-                e.response.data?.errors &&
-                observer
-              ) {
-                observer.setErrors(e.response.data.errors)
-              }
+        try {
+          const response = await this.$store.dispatch(action, payload)
 
-              reject(e)
-            })
-        })
+          this[name].state = 'success'
+          this[name].responseStatus = response?.status
+        } catch (e) {
+          this[name].state = 'error'
+          this[name].responseStatus = e.response?.status
+
+          if (
+            e.response?.status === 422 &&
+            e.response.data?.errors &&
+            observer
+          ) {
+            observer.setErrors(e.response.data.errors)
+          }
+
+          throw e
+        }
       },
     },
   }
