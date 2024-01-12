@@ -167,8 +167,12 @@ export default {
       if (!this.openOnMouseEnter) {
         return
       }
-      // If it's in the delay to close, cancel it
-      this.waitingToClose = false
+
+      // If it's in the delay to close, cancel it -> this means it is already open
+      if (this.waitingToClose) {
+        this.waitingToClose = false
+        return
+      }
 
       // Wait for the delay before opening
       if (this.delayOpen > 0) {
@@ -191,8 +195,12 @@ export default {
       if (!this.closeOnMouseLeave) {
         return
       }
-      // If it's in the delay to open, cancel it
-      this.waitingToOpen = false
+
+      // If it's in the delay to open, cancel it -> this means it is already closed
+      if (this.waitingToOpen) {
+        this.waitingToOpen = false
+        return
+      }
 
       // Wait for the delay before closing
       if (this.delayClose > 0) {
