@@ -62,6 +62,14 @@ export default {
       type: Boolean,
       default: true,
     },
+    delayOpen: {
+      type: Number,
+      default: 0,
+    },
+    delayClose: {
+      type: Number,
+      default: 0,
+    },
   },
 
   data() {
@@ -73,6 +81,8 @@ export default {
       button: null,
       panelId: `popover-panel-${useId()}`,
       panel: null,
+      waitingToOpen: false,
+      waitingToClose: false,
     }
   },
 
@@ -153,22 +163,60 @@ export default {
       this.panel = null
     },
 
-    onMouseEnter(event) {
-      if (this.openOnMouseEnter) {
-        event.preventDefault()
-        event.stopPropagation()
-
-        this.open()
+    async onMouseEnter(event) {
+      if (!this.openOnMouseEnter) {
+        return
       }
+
+      // If it's in the delay to close, cancel it -> this means it is already open
+      if (this.waitingToClose) {
+        this.waitingToClose = false
+        return
+      }
+
+      // Wait for the delay before opening
+      if (this.delayOpen > 0) {
+        this.waitingToOpen = true
+        await new Promise((resolve) => setTimeout(resolve, this.delayOpen))
+
+        // Do not open if the mouse has already left the button
+        if (!this.waitingToOpen) {
+          return
+        }
+        this.waitingToOpen = false
+      }
+
+      event.preventDefault()
+      event.stopPropagation()
+      this.open()
     },
 
-    onMouseLeave(event) {
-      if (this.closeOnMouseLeave) {
-        event.preventDefault()
-        event.stopPropagation()
-
-        this.close()
+    async onMouseLeave(event) {
+      if (!this.closeOnMouseLeave) {
+        return
       }
+
+      // If it's in the delay to open, cancel it -> this means it is already closed
+      if (this.waitingToOpen) {
+        this.waitingToOpen = false
+        return
+      }
+
+      // Wait for the delay before closing
+      if (this.delayClose > 0) {
+        this.waitingToClose = true
+        await new Promise((resolve) => setTimeout(resolve, this.delayClose))
+
+        // Do not close if the mouse has already entered again the button
+        if (!this.waitingToClose) {
+          return
+        }
+        this.waitingToClose = false
+      }
+
+      event.preventDefault()
+      event.stopPropagation()
+      this.close()
     },
 
     onEsc(event) {
